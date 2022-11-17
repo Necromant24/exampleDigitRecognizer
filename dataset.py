@@ -4,12 +4,10 @@ import numpy as np
 
 def get_dataset():
     path = "train_data_formatted.png"
-    path2 = "/storage/emulated/0/Download/neuralNet/mnist.png"
 
-    p3 = "/storage/emulated/0/Download/neuralNet/1_Ft2rLuO82eItlvJn5HOi9A.png"
-
+    # load img
     img = Image.open(path).convert("L")
-
+    # convert to two dimensional array
     arr = np.array(img)
 
     size = img.size
@@ -18,7 +16,6 @@ def get_dataset():
     h = size[1]
     w = size[0]
 
-    data = []
 
     d2 = []
 
@@ -34,12 +31,16 @@ def get_dataset():
 
     dt = []
 
+    # высота в 10 цифр 0-9
     for h in range(10):
         nums = []
+        # ширина в 10 цифр одного типа
         for w in range(10):
             num = []
+            # высота в пикселях одного сектора
             for i in range(5):
                 row = []
+                # ширина в пикселях одного сектора
                 for j in range(3):
                     if arr[h * 5 + i][w * 3 + j] == 255:
                         row.append(1)
